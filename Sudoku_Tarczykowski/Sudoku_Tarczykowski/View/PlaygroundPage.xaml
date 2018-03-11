@@ -40,86 +40,86 @@
         <Rectangle Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="LightCoral" Stroke="Red"/>
         <Rectangle Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="LawnGreen" Stroke="Red"/>
         <Rectangle Grid.Row="6" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Orange" Stroke="Red"/>
-        <TextBox Grid.Row="0" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox Grid.Row="8" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[0].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[1].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[2].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[3].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[4].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[5].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[6].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[7].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[8].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[9].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[10].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[11].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[12].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[13].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[14].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[15].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[16].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="1" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[17].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[18].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[19].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[20].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[21].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[22].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[23].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[24].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[25].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="2" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[26].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[27].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[28].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[29].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[30].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[31].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[32].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[33].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[34].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="3" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[35].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[36].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[37].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[38].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[39].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[40].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[41].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[42].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[43].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="4" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[44].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[45].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[46].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[47].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[48].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[49].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[50].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[51].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[52].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="5" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[53].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[54].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[55].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[56].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[57].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[58].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[59].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[60].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[61].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="6" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[62].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[63].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[64].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[65].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[66].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[67].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[68].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[69].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[70].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="7" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[71].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="0" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[72].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="1" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[73].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="2" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[74].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="3" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[75].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="4" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[76].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="5" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[77].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[78].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[79].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="8" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" Text="{Binding CurrenBoard.Fields[80].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Page>
