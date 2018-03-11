@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,14 @@ namespace Sudoku_Tarczykowski.View
         public PlaygroundPage()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(Regex.IsMatch(((TextBox)sender).Text, "([^1-9])"))
+            {
+                ((TextBox)sender).Text = "0";
+            }
         }
     }
 }

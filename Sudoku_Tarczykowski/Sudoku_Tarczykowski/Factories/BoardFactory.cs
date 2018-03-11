@@ -352,7 +352,7 @@ namespace Sudoku_Tarczykowski.Factories
                     {
                         squareID = 8;
                     }
-                    newBoard.Fields.Add(new Field(field, rowID, columnID, squareID));
+                    newBoard.Fields.Add(new Field(field.ToString(), rowID, columnID, squareID));
                     if(columnID == 8)
                     {
                         rowID++;
