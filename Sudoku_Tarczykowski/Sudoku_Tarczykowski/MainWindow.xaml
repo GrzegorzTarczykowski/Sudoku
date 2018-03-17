@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku_Tarczykowski"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="580">
+        Title="MainWindow" Height="600" Width="740">
     <Grid Background="Purple">
         <Frame x:Name="MainFrame" Height="Auto" Width="Auto" Content="{Binding MainFrame}"/>
     </Grid>

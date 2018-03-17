@@ -62,7 +62,7 @@ namespace Sudoku_Tarczykowski.Model
                     }
                     else
                     {
-                        //MessageBox.Show("Uzyj cyfry od 1 do 9");
+                        MessageBox.Show("Uzyj cyfry od 1 do 9");
                     }
                 }
                 else

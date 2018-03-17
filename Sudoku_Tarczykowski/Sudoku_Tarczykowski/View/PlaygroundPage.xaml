@@ -30,6 +30,7 @@
             <ColumnDefinition Width="60"/>
             <ColumnDefinition Width="60"/>
             <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Blue" Stroke="Red"/>
         <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Gray" Stroke="Red"/>
@@ -121,5 +122,11 @@
         <TextBox Grid.Row="8" Grid.Column="6" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" TextChanged="TextBox_TextChanged" Text="{Binding CurrentBoard.Fields[78].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Grid.Row="8" Grid.Column="7" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" TextChanged="TextBox_TextChanged" Text="{Binding CurrentBoard.Fields[79].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Grid.Row="8" Grid.Column="8" Margin="10" MaxLength="1" FontSize="25" FontWeight="Bold" HorizontalContentAlignment="Center" TextChanged="TextBox_TextChanged" Text="{Binding CurrentBoard.Fields[80].ValueField, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="buttonNewGame" Command="{Binding ButtonNewGameClickCommand}" Grid.Row="1" Grid.Column="9" Height="60" Width="Auto" Content=" Nowa Gra " FontSize="25" FontWeight="Bold"/>
+        <Button x:Name="buttonSaveGame" Command="{Binding ButtonSaveGameClickCommand}" Grid.Row="2" Grid.Column="9" Height="60" Width="Auto" Content=" Zapisz " FontSize="25" FontWeight="Bold"/>
+        <Button x:Name="buttonLoadGame" Command="{Binding ButtonLoadGameClickCommand}" Grid.Row="3" Grid.Column="9" Height="60" Width="Auto" Content=" Wczytaj " FontSize="25" FontWeight="Bold"/>
+        <Button x:Name="buttonHelp" Command="{Binding ButtonHelpClickCommand}" Grid.Row="4" Grid.Column="9" Height="60" Width="Auto" Content=" Podpowiedź " FontSize="25" FontWeight="Bold"/>
+        <Button x:Name="buttonSolveGame" Command="{Binding ButtonSolveGameClickCommand}" Grid.Row="5" Grid.Column="9" Height="60" Width="Auto" Content=" Rozwiąż " FontSize="25" FontWeight="Bold"/>
+        <Button x:Name="buttonPrintGame" Command="{Binding ButtonPrintGameClickCommand}" Grid.Row="6" Grid.Column="9" Height="60" Width="Auto" Content=" Drukuj " FontSize="25" FontWeight="Bold"/>
     </Grid>
 </Page>
