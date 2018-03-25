@@ -366,5 +366,62 @@ namespace Sudoku_Tarczykowski.Factories
             }
             return newBoard;
         }
+        internal Board CreateBoardBasedOnLoading(List<string> listOfValueFields)
+        {
+            Board newBoard = new Board();
+            int rowID = 0;
+            int columnID = 0;
+            int squareID = 0;
+            foreach (string valueField in listOfValueFields)
+            {
+                if (rowID < 3 && columnID < 3)
+                {
+                    squareID = 0;
+                }
+                else if (rowID < 3 && columnID < 6)
+                {
+                    squareID = 1;
+                }
+                else if (rowID < 3 && columnID < 9)
+                {
+                    squareID = 2;
+                }
+                else if (rowID < 6 && columnID < 3)
+                {
+                    squareID = 3;
+                }
+                else if (rowID < 6 && columnID < 6)
+                {
+                    squareID = 4;
+                }
+                else if (rowID < 6 && columnID < 9)
+                {
+                    squareID = 5;
+                }
+                else if (rowID < 9 && columnID < 3)
+                {
+                    squareID = 6;
+                }
+                else if (rowID < 9 && columnID < 6)
+                {
+                    squareID = 7;
+                }
+                else if (rowID < 9 && columnID < 9)
+                {
+                    squareID = 8;
+                }
+                newBoard.Fields.Add(new Field(valueField, rowID, columnID, squareID));
+                if (columnID == 8)
+                {
+                    rowID++;
+                    columnID = 0;
+                }
+                else
+                {
+                    columnID++;
+                }
+            }
+            return newBoard;
+        }
     }
 }

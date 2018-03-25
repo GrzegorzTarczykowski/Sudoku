@@ -30,7 +30,7 @@ namespace Sudoku_Tarczykowski.View
         {
             if(Regex.IsMatch(((TextBox)sender).Text, "([^1-9])"))
             {
-                ((TextBox)sender).Text = "0";
+                ((TextBox)sender).Text = "";
             }
         }
     }

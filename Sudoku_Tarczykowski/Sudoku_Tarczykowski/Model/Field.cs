@@ -29,9 +29,9 @@ namespace Sudoku_Tarczykowski.Model
             Column = column;
             Square = square;
         }
-        protected virtual void OnAddedField (string value)
+        protected virtual void OnAddedField(string value)
         {
-            if(AddedValueField != null)
+            if (AddedValueField != null)
             {
                 AddedValueField(this, new FieldEventArgs() { ValueField = value });
             }
@@ -42,27 +42,20 @@ namespace Sudoku_Tarczykowski.Model
             get { return valueField; }
             set
             {
-                if(AllFieldAreCreated)
+                if (AllFieldAreCreated)
                 {
-                    if (Regex.IsMatch(value, "([1-9])") || value == "")
+                    if (IsCorrect)
                     {
-                        if (IsCorrect)
+                        if (value != valueField)
                         {
-                            if (value != valueField)
-                            {
-                                valueField = value;
-                                OnPropertyChanged("ValueField");
-                            }
-                            IsCorrect = false;
+                            valueField = value;
+                            OnPropertyChanged("ValueField");
                         }
-                        else
-                        {
-                            OnAddedField(value);
-                        }
+                        IsCorrect = false;
                     }
                     else
                     {
-                        MessageBox.Show("Uzyj cyfry od 1 do 9");
+                        OnAddedField(value);
                     }
                 }
                 else
