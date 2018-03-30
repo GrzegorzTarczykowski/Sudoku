@@ -69,31 +69,6 @@ namespace Sudoku_Tarczykowski.ViewModel
                 MessageBox.Show("Cyfra w kazdym wierszu, kolumnie i kwadracie musi być unikatowa!");
             }
         }
-        private void RecursivesGenerateRandomEmptyField(int minValue, int maxValue, ref int howManyFieldsToDoEmptyYet)
-        {
-            Random random = new Random();
-            int currentRandom = random.Next(minValue, maxValue);
-            CurrentBoard.Fields[currentRandom].ValueField = "";
-            howManyFieldsToDoEmptyYet--;
-            if (howManyFieldsToDoEmptyYet > 1)
-            {
-                if (currentRandom > 0 && minValue < currentRandom - 1)
-                {
-                    RecursivesGenerateRandomEmptyField(minValue, currentRandom - 1, ref howManyFieldsToDoEmptyYet);
-                }
-                if (currentRandom < 80 && currentRandom + 1 < maxValue)
-                {
-                    RecursivesGenerateRandomEmptyField(currentRandom + 1, maxValue, ref howManyFieldsToDoEmptyYet);
-                }
-            }
-            else if (howManyFieldsToDoEmptyYet > 0)
-            {
-                if (currentRandom > 0 && minValue < currentRandom - 1)
-                {
-                    RecursivesGenerateRandomEmptyField(minValue, currentRandom - 1, ref howManyFieldsToDoEmptyYet);
-                }
-            }
-        }
         private void buttonNewGameAction()
         {
             BoardFactory boardFactory = new BoardFactory();
@@ -118,7 +93,46 @@ namespace Sudoku_Tarczykowski.ViewModel
                     howManyFieldsToDoEmptyYet = 60;
                     break;
             }
-            RecursivesGenerateRandomEmptyField(0, 80, ref howManyFieldsToDoEmptyYet);
+            List<int> listOfRandomEmpltyFieldIndex = new List<int>();
+            Random random = new Random();
+            listOfRandomEmpltyFieldIndex.Add(random.Next(0, 80));
+            while (listOfRandomEmpltyFieldIndex.Count < howManyFieldsToDoEmptyYet)
+            {
+                int poczatek = 0;
+                int koniec = 80;
+                List<int> _listOfRandomEmpltyFieldIndex = new List<int>();
+                foreach (int randomNumber in listOfRandomEmpltyFieldIndex)
+                {
+                    if (listOfRandomEmpltyFieldIndex.Count + _listOfRandomEmpltyFieldIndex.Count < howManyFieldsToDoEmptyYet)
+                    {
+                        if (poczatek < randomNumber - 1)
+                        {
+                            _listOfRandomEmpltyFieldIndex.Add(random.Next(poczatek + 1, randomNumber - 1));
+                        }
+                        poczatek = randomNumber;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (listOfRandomEmpltyFieldIndex.Count + _listOfRandomEmpltyFieldIndex.Count < howManyFieldsToDoEmptyYet)
+                {
+                    if (poczatek < koniec)
+                    {
+                        _listOfRandomEmpltyFieldIndex.Add(random.Next(poczatek + 1, koniec));
+                    }
+                }
+                foreach (int randomNumber in _listOfRandomEmpltyFieldIndex)
+                {
+                    listOfRandomEmpltyFieldIndex.Add(randomNumber);
+                }
+                listOfRandomEmpltyFieldIndex.Sort();
+            }
+            foreach (int randomNumber in listOfRandomEmpltyFieldIndex)
+            {
+                CurrentBoard.Fields[randomNumber].ValueField = "";
+            }
         }
         private void buttonSaveGameAction()
         {
