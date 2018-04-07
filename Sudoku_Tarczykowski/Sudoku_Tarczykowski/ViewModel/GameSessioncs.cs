@@ -12,6 +12,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading;
+using Microsoft.Win32;
 
 namespace Sudoku_Tarczykowski.ViewModel
 {
@@ -64,9 +66,47 @@ namespace Sudoku_Tarczykowski.ViewModel
                 ((Field)o).IsCorrect = true;
                 ((Field)o).ValueField = e.ValueField;
             }
-            else
+        }
+        private void RecursivesSolver(int currentFieldToCheck, ref Board currentBoard, ref bool isDone)
+        {
+            for (int i = 1; i < 11; i++)
             {
-                MessageBox.Show("Cyfra w kazdym wierszu, kolumnie i kwadracie musi być unikatowa!");
+                if (isDone)
+                {
+                    break;
+                }
+                else
+                {
+                    if (i == 10)
+                    {
+                        currentBoard.Fields[currentFieldToCheck].ValueField = "";
+                        break;
+                    }
+                    else
+                    {
+                        currentBoard.Fields[currentFieldToCheck].ValueField = "";
+                        currentBoard.Fields[currentFieldToCheck].ValueField = i.ToString();
+                        if (!(currentBoard.Fields[currentFieldToCheck].ValueField == ""))
+                        {
+                            for (int j = currentFieldToCheck + 1; j < 82; j++)
+                            {
+                                if (j == 81)
+                                {
+                                    isDone = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    if (currentBoard.Fields[j].ValueField == "")
+                                    {
+                                        RecursivesSolver(j, ref currentBoard, ref isDone);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         private void buttonNewGameAction()
@@ -137,57 +177,78 @@ namespace Sudoku_Tarczykowski.ViewModel
         private void buttonSaveGameAction()
         {
             MessageBox.Show("Zapisuje");
-            StreamWriter sw = new StreamWriter("Sudoku.txt");
-            string tableToSave = "";
-            foreach (Field field in CurrentBoard.Fields)
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "txt | *.txt";
+            sfd.FileName = "Sudoku.txt";
+            sfd.ShowDialog();
+            if(sfd.FileName != "")
             {
-                if (field.ValueField == "")
+                StreamWriter sw = new StreamWriter(sfd.FileName);
+                string tableToSave = "";
+                foreach (Field field in CurrentBoard.Fields)
                 {
-                    tableToSave += "0" + " ";
+                    if (field.ValueField == "")
+                    {
+                        tableToSave += "0" + " ";
+                    }
+                    else
+                    {
+                        tableToSave += field.ValueField + " ";
+                    }
                 }
-                else
-                {
-                    tableToSave += field.ValueField + " ";
-                }
+                sw.WriteLine(tableToSave);
+                sw.Close();
             }
-            sw.WriteLine(tableToSave);
-            sw.Close();
         }
         private void buttonLoadGameAction()
         {
             MessageBox.Show("Wczytuje");
-            StreamReader sr = new StreamReader("Sudoku.txt");
-            string tableFromLoad = "";
-            tableFromLoad = sr.ReadLine();
-            sr.Close();
-            if (tableFromLoad.Length == 162)
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "txt | *.txt";
+            ofd.FileName = "Sudoku.txt";
+            ofd.ShowDialog();
+            if (ofd.FileName != "")
             {
-                List<string> listOfValueFields = new List<string>();
-                for (int i = 0; i < 161; i = i + 2)
+                StreamReader sr = new StreamReader(ofd.FileName);
+                string tableFromLoad = "";
+                tableFromLoad = sr.ReadLine();
+                sr.Close();
+                if (tableFromLoad.Length == 162)
                 {
-                    listOfValueFields.Add(tableFromLoad[i].ToString());
-                }
-                BoardFactory boardFactory = new BoardFactory();
-                Board temporaryBoard = boardFactory.CreateBoardBasedOnLoading(listOfValueFields);
-                if (temporaryBoard.ValidatorBoard())
-                {
-                    CurrentBoard = temporaryBoard;
-                    _canSaveAction = true;
-                    ButtonSaveGameClickCommand = null;
-                    foreach (Field field in CurrentBoard.Fields)
+                    List<string> listOfValueFields = new List<string>();
+                    for (int i = 0; i < 161; i = i + 2)
                     {
-                        field.AllFieldAreCreated = true;
-                        field.AddedValueField += OnAddedField;
+                        listOfValueFields.Add(tableFromLoad[i].ToString());
+                    }
+                    BoardFactory boardFactory = new BoardFactory();
+                    Board temporaryBoard = boardFactory.CreateBoardBasedOnLoading(listOfValueFields);
+                    if (temporaryBoard.ValidatorBoard())
+                    {
+                        foreach (Field field in temporaryBoard.Fields)
+                        {
+                            if (field.ValueField == "0")
+                            {
+                                field.ValueField = "";
+                            }
+                        }
+                        CurrentBoard = temporaryBoard;
+                        _canSaveAction = true;
+                        ButtonSaveGameClickCommand = null;
+                        foreach (Field field in CurrentBoard.Fields)
+                        {
+                            field.AllFieldAreCreated = true;
+                            field.AddedValueField += OnAddedField;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nieprawidlowy ciag znakow w pliku Sudoku.txt");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Nieprawidlowy ciag znakow w pliku Sudoku.txt");
+                    MessageBox.Show("Ciag znakow w pliku Sudoku.txt musi posiadac 162 znaki");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Ciag znakow w pliku Sudoku.txt musi posiadac 162 znaki");
             }
         }
         private void buttonHelpAction()
@@ -197,6 +258,8 @@ namespace Sudoku_Tarczykowski.ViewModel
         private void buttonSolveGameAction()
         {
             MessageBox.Show("Rozwiązanie");
+            bool isDone = false;
+            RecursivesSolver(1, ref currentBoard, ref isDone);
         }
         private void buttonPrintGameAction()
         {
