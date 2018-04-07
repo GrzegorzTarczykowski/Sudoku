@@ -14,6 +14,9 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading;
 using Microsoft.Win32;
+using System.Windows.Documents;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Sudoku_Tarczykowski.ViewModel
 {
@@ -22,6 +25,9 @@ namespace Sudoku_Tarczykowski.ViewModel
         private Page mainFrame;
         public Board currentBoard;
         bool _canSaveAction;
+        bool _canHelpAction;
+        bool _canSolveAction;
+        bool _canPrintAction;
         private ICommand buttonNewGameClickCommand;
         private ICommand buttonSaveGameClickCommand;
         private ICommand buttonLoadGameClickCommand;
@@ -35,6 +41,9 @@ namespace Sudoku_Tarczykowski.ViewModel
             MainFrame = new PlaygroundPage();
             MainFrame.DataContext = this;
             _canSaveAction = false;
+            _canHelpAction = false;
+            _canSolveAction = false;
+            _canPrintAction = false;
             levelOfTheGame = new ObservableCollection<int>() { 1, 2, 3 };
             selectedLevel = new int();
             SelectedLevel = 1;
@@ -115,6 +124,12 @@ namespace Sudoku_Tarczykowski.ViewModel
             CurrentBoard = boardFactory.CreateBoard();
             _canSaveAction = true;
             ButtonSaveGameClickCommand = null;
+            _canHelpAction = true;
+            ButtonHelpClickCommand = null;
+            _canSolveAction = true;
+            ButtonSolveGameClickCommand = null;
+            _canPrintAction = true;
+            ButtonPrintGameClickCommand = null;
             foreach (Field field in CurrentBoard.Fields)
             {
                 field.AllFieldAreCreated = true;
@@ -234,6 +249,12 @@ namespace Sudoku_Tarczykowski.ViewModel
                         CurrentBoard = temporaryBoard;
                         _canSaveAction = true;
                         ButtonSaveGameClickCommand = null;
+                        _canHelpAction = true;
+                        ButtonHelpClickCommand = null;
+                        _canSolveAction = true;
+                        ButtonSolveGameClickCommand = null;
+                        _canPrintAction = true;
+                        ButtonPrintGameClickCommand = null;
                         foreach (Field field in CurrentBoard.Fields)
                         {
                             field.AllFieldAreCreated = true;
@@ -264,6 +285,27 @@ namespace Sudoku_Tarczykowski.ViewModel
         private void buttonPrintGameAction()
         {
             MessageBox.Show("Drukuj");
+            PdfPTable pdfTable = new PdfPTable(9);
+            pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            pdfTable.DefaultCell.FixedHeight = 45;
+            foreach (Field field in CurrentBoard.Fields)
+            {
+                if (field.ValueField != "")
+                {
+                    pdfTable.AddCell(field.ValueField);
+                }
+                else
+                {
+                    pdfTable.AddCell(" ");
+                }
+            }
+            Document doc = new Document(PageSize.A4, 25, 25, 25, 25);
+            PdfWriter.GetInstance(doc, new FileStream("S.pdf", FileMode.Create));
+            doc.Open();
+            doc.Add(pdfTable);
+            doc.Close();
+            System.Diagnostics.Process.Start(@"S.pdf");
         }
         #region Property
         public ICommand ButtonNewGameClickCommand
@@ -299,21 +341,45 @@ namespace Sudoku_Tarczykowski.ViewModel
         {
             get
             {
-                return buttonHelpClickCommand ?? (buttonHelpClickCommand = new CommandHandler(() => buttonHelpAction(), true));
+                return buttonHelpClickCommand ?? (buttonHelpClickCommand = new CommandHandler(() => buttonHelpAction(), _canHelpAction));
+            }
+            set
+            {
+                if (value != buttonHelpClickCommand)
+                {
+                    buttonHelpClickCommand = value;
+                    OnPropertyChanged("ButtonHelpClickCommand");
+                }
             }
         }
         public ICommand ButtonSolveGameClickCommand
         {
             get
             {
-                return buttonSolveGameClickCommand ?? (buttonSolveGameClickCommand = new CommandHandler(() => buttonSolveGameAction(), true));
+                return buttonSolveGameClickCommand ?? (buttonSolveGameClickCommand = new CommandHandler(() => buttonSolveGameAction(), _canSolveAction));
+            }
+            set
+            {
+                if (value != buttonSolveGameClickCommand)
+                {
+                    buttonSolveGameClickCommand = value;
+                    OnPropertyChanged("ButtonSolveGameClickCommand");
+                }
             }
         }
         public ICommand ButtonPrintGameClickCommand
         {
             get
             {
-                return buttonPrintGameClickCommand ?? (buttonPrintGameClickCommand = new CommandHandler(() => buttonPrintGameAction(), true));
+                return buttonPrintGameClickCommand ?? (buttonPrintGameClickCommand = new CommandHandler(() => buttonPrintGameAction(), _canPrintAction));
+            }
+            set
+            {
+                if (value != buttonPrintGameClickCommand)
+                {
+                    buttonPrintGameClickCommand = value;
+                    OnPropertyChanged("ButtonPrintGameClickCommand");
+                }
             }
         }
         public Page MainFrame
