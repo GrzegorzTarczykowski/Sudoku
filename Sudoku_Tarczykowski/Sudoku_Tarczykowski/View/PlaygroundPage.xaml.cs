@@ -33,5 +33,10 @@ namespace Sudoku_Tarczykowski.View
                 ((TextBox)sender).Text = "";
             }
         }
+
+        private void TextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            chosenTextBoxToHelp.Text = Regex.Match(((TextBox)sender).Name, @"([0-9]+)").Value;
+        }
     }
 }

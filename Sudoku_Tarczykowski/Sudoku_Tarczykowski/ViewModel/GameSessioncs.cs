@@ -36,6 +36,8 @@ namespace Sudoku_Tarczykowski.ViewModel
         private ICommand buttonPrintGameClickCommand;
         private ObservableCollection<int> levelOfTheGame;
         private int selectedLevel;
+        private int amountOfHelp;
+        private string chosenTextBoxToHelp;
         public GameSessioncs()
         {
             MainFrame = new PlaygroundPage();
@@ -47,6 +49,7 @@ namespace Sudoku_Tarczykowski.ViewModel
             levelOfTheGame = new ObservableCollection<int>() { 1, 2, 3 };
             selectedLevel = new int();
             SelectedLevel = 1;
+            amountOfHelp = 3;
         }
         private void OnAddedField(object o, FieldEventArgs e)
         {
@@ -76,7 +79,7 @@ namespace Sudoku_Tarczykowski.ViewModel
                 ((Field)o).ValueField = e.ValueField;
             }
         }
-        private void RecursivesSolver(int currentFieldToCheck, ref Board currentBoard, ref bool isDone)
+        private void RecursivesSolver(int currentFieldToCheck, ref Board tmpCurrentBoard, ref bool isDone, ref Stack<int> stackOfIndexEmptyField)
         {
             for (int i = 1; i < 11; i++)
             {
@@ -88,30 +91,24 @@ namespace Sudoku_Tarczykowski.ViewModel
                 {
                     if (i == 10)
                     {
-                        currentBoard.Fields[currentFieldToCheck].ValueField = "";
+                        tmpCurrentBoard.Fields[currentFieldToCheck].ValueField = "";
+                        stackOfIndexEmptyField.Push(currentFieldToCheck);
                         break;
                     }
                     else
                     {
-                        currentBoard.Fields[currentFieldToCheck].ValueField = "";
-                        currentBoard.Fields[currentFieldToCheck].ValueField = i.ToString();
-                        if (!(currentBoard.Fields[currentFieldToCheck].ValueField == ""))
+                        tmpCurrentBoard.Fields[currentFieldToCheck].ValueField = "";
+                        tmpCurrentBoard.Fields[currentFieldToCheck].ValueField = i.ToString();
+                        if (tmpCurrentBoard.ShortValidatorBoard(tmpCurrentBoard.Fields[currentFieldToCheck]))
                         {
-                            for (int j = currentFieldToCheck + 1; j < 82; j++)
+                            if(stackOfIndexEmptyField.Count > 0)
                             {
-                                if (j == 81)
-                                {
-                                    isDone = true;
-                                    break;
-                                }
-                                else
-                                {
-                                    if (currentBoard.Fields[j].ValueField == "")
-                                    {
-                                        RecursivesSolver(j, ref currentBoard, ref isDone);
-                                        break;
-                                    }
-                                }
+                                RecursivesSolver(stackOfIndexEmptyField.Pop(), ref tmpCurrentBoard, ref isDone, ref stackOfIndexEmptyField);
+                            }
+                            else
+                            {
+                                isDone = true;
+                                break;
                             }
                         }
                     }
@@ -274,17 +271,103 @@ namespace Sudoku_Tarczykowski.ViewModel
         }
         private void buttonHelpAction()
         {
-            MessageBox.Show("Pomoc");
+            bool isDone = false;
+            Stack<int> stackOfIndexEmptyField = new Stack<int>();
+            List<string> listOfValueFromCurrentBoard = new List<string>();
+            for (int i = CurrentBoard.Fields.Count - 1; i >= 0; i--)
+            {
+                if (CurrentBoard.Fields[i].ValueField == "")
+                {
+                    stackOfIndexEmptyField.Push(i);
+                }
+            }
+            foreach (Field field in CurrentBoard.Fields)
+            {
+                listOfValueFromCurrentBoard.Add(field.ValueField);
+            }
+            BoardFactory boardFactory = new BoardFactory();
+            Board tmpCurrentBoard = boardFactory.CreateBoardBasedOnLoading(listOfValueFromCurrentBoard);
+            RecursivesSolver(stackOfIndexEmptyField.Pop(), ref tmpCurrentBoard, ref isDone, ref stackOfIndexEmptyField);
+            if (isDone)
+            {
+                MessageBox.Show(ChosenTextBoxToHelp);
+                //CurrentBoard = tmpCurrentBoard;
+                //foreach (Field field in CurrentBoard.Fields)
+                //{
+                //    field.AllFieldAreCreated = true;
+                //    field.AddedValueField += OnAddedField;
+                //}
+            }
+            else
+            {
+                MessageBox.Show("Nie można znalesc rozwiazania");
+            }
+            AmountOfHelp--;
+            if(AmountOfHelp == 0)
+            {
+                _canHelpAction = false;
+                ButtonHelpClickCommand = null;
+            }
+            isDone = false;
+            foreach (Field field in CurrentBoard.Fields)
+            {
+                if(field.ValueField == "")
+                {
+                    isDone = false;
+                    break;
+                }
+                else
+                {
+                    isDone = true;
+                }
+            }
+            if(isDone)
+            {
+                _canHelpAction = false;
+                ButtonHelpClickCommand = null;
+                _canSolveAction = false;
+                ButtonSolveGameClickCommand = null;
+            }
         }
         private void buttonSolveGameAction()
         {
-            MessageBox.Show("Rozwiązanie");
             bool isDone = false;
-            RecursivesSolver(1, ref currentBoard, ref isDone);
+            Stack<int> stackOfIndexEmptyField = new Stack<int>();
+            List<string> listOfValueFromCurrentBoard = new List<string>();
+            for (int i = CurrentBoard.Fields.Count - 1; i >= 0; i--)
+            {
+                if(CurrentBoard.Fields[i].ValueField == "")
+                {
+                    stackOfIndexEmptyField.Push(i);
+                }
+            }
+            foreach(Field field in CurrentBoard.Fields)
+            {
+                listOfValueFromCurrentBoard.Add(field.ValueField);
+            }
+            BoardFactory boardFactory = new BoardFactory();
+            Board tmpCurrentBoard = boardFactory.CreateBoardBasedOnLoading(listOfValueFromCurrentBoard);
+            RecursivesSolver(stackOfIndexEmptyField.Pop(), ref tmpCurrentBoard, ref isDone, ref stackOfIndexEmptyField);
+            if(isDone)
+            {
+                CurrentBoard = tmpCurrentBoard;
+                foreach (Field field in CurrentBoard.Fields)
+                {
+                    field.AllFieldAreCreated = true;
+                    field.AddedValueField += OnAddedField;
+                }
+                _canHelpAction = false;
+                ButtonHelpClickCommand = null;
+                _canSolveAction = false;
+                ButtonSolveGameClickCommand = null;
+            }
+            else
+            {
+                MessageBox.Show("Nie można znalesc rozwiazania");
+            }
         }
         private void buttonPrintGameAction()
         {
-            MessageBox.Show("Drukuj");
             PdfPTable pdfTable = new PdfPTable(9);
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfTable.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -300,7 +383,7 @@ namespace Sudoku_Tarczykowski.ViewModel
                     pdfTable.AddCell(" ");
                 }
             }
-            Document doc = new Document(PageSize.A4, 25, 25, 25, 25);
+            Document doc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
             PdfWriter.GetInstance(doc, new FileStream("S.pdf", FileMode.Create));
             doc.Open();
             doc.Add(pdfTable);
@@ -422,6 +505,24 @@ namespace Sudoku_Tarczykowski.ViewModel
             {
                 selectedLevel = value;
                 OnPropertyChanged("SelectedLevel");
+            }
+        }
+        public int AmountOfHelp
+        {
+            get { return amountOfHelp; }
+            set
+            {
+                amountOfHelp = value;
+                OnPropertyChanged("AmountOfHelp");
+            }
+        }
+        public string ChosenTextBoxToHelp
+        {
+            get { return chosenTextBoxToHelp; }
+            set
+            {
+                chosenTextBoxToHelp = value;
+                OnPropertyChanged("ChosenTextBoxToHelp");
             }
         }
         #endregion

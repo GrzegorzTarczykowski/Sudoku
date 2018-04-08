@@ -50,5 +50,21 @@ namespace Sudoku_Tarczykowski.Model
             }
             return isUniqueNumber;
         }
+        public bool ShortValidatorBoard(Field currentCheckedField)
+        {
+            bool isUniqueNumber = true;
+            foreach (Field field in Fields)
+            {
+                if (!(currentCheckedField.ValueField == field.ValueField && currentCheckedField.Row == field.Row && currentCheckedField.Column == field.Column && currentCheckedField.Square == field.Square))
+                {
+                    if (currentCheckedField.ValueField == field.ValueField && (currentCheckedField.Row == field.Row || currentCheckedField.Column == field.Column || currentCheckedField.Square == field.Square))
+                    {
+                        isUniqueNumber = false;
+                        break;
+                    }
+                }
+            }
+            return isUniqueNumber;
+        }
     }
 }
