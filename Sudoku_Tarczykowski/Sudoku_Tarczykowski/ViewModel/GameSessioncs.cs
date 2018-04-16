@@ -38,6 +38,8 @@ namespace Sudoku_Tarczykowski.ViewModel
         private int selectedLevel;
         private int amountOfHelp;
         private string chosenTextBoxToHelp;
+        private Thread threadHelp;
+        private Thread threadSolver;
         public GameSessioncs()
         {
             MainFrame = new PlaygroundPage();
@@ -50,6 +52,9 @@ namespace Sudoku_Tarczykowski.ViewModel
             selectedLevel = new int();
             SelectedLevel = 1;
             amountOfHelp = 3;
+            threadHelp = new Thread(ThreadMethodHelp);
+            threadSolver = new Thread(ThreadMethodSolver);
+            AmountOfHelp = 0;
         }
         private void OnAddedField(object o, FieldEventArgs e)
         {
@@ -101,7 +106,7 @@ namespace Sudoku_Tarczykowski.ViewModel
                         tmpCurrentBoard.Fields[currentFieldToCheck].ValueField = i.ToString();
                         if (tmpCurrentBoard.ShortValidatorBoard(tmpCurrentBoard.Fields[currentFieldToCheck]))
                         {
-                            if(stackOfIndexEmptyField.Count > 0)
+                            if (stackOfIndexEmptyField.Count > 0)
                             {
                                 RecursivesSolver(stackOfIndexEmptyField.Pop(), ref tmpCurrentBoard, ref isDone, ref stackOfIndexEmptyField);
                             }
@@ -115,7 +120,107 @@ namespace Sudoku_Tarczykowski.ViewModel
                 }
             }
         }
-        private void buttonNewGameAction()
+        public void ThreadMethodHelp()
+        {
+            MessageBox.Show("Kliknij dwukrotnie na pole, ktore ma byc odkryte");
+            Thread.CurrentThread.Suspend();
+            bool isDone = false;
+            Stack<int> stackOfIndexEmptyField = new Stack<int>();
+            List<string> listOfValueFromCurrentBoard = new List<string>();
+            for (int i = CurrentBoard.Fields.Count - 1; i >= 0; i--)
+            {
+                if (CurrentBoard.Fields[i].ValueField == "")
+                {
+                    stackOfIndexEmptyField.Push(i);
+                }
+            }
+            foreach (Field field in CurrentBoard.Fields)
+            {
+                listOfValueFromCurrentBoard.Add(field.ValueField);
+            }
+            BoardFactory boardFactory = new BoardFactory();
+            Board tmpCurrentBoard = boardFactory.CreateBoardBasedOnLoading(listOfValueFromCurrentBoard);
+            if (stackOfIndexEmptyField.Count != 0)
+            {
+                RecursivesSolver(stackOfIndexEmptyField.Pop(), ref tmpCurrentBoard, ref isDone, ref stackOfIndexEmptyField);
+                if (isDone)
+                {
+                    CurrentBoard.Fields[Convert.ToInt32(ChosenTextBoxToHelp)].ValueField = tmpCurrentBoard.Fields[Convert.ToInt32(ChosenTextBoxToHelp)].ValueField;
+                }
+                else
+                {
+                    MessageBox.Show("Nie można znalesc rozwiazania");
+                }
+                AmountOfHelp--;
+                if (AmountOfHelp == 0)
+                {
+                    _canHelpAction = false;
+                    ButtonHelpClickCommand = null;
+                }
+                isDone = false;
+                foreach (Field field in CurrentBoard.Fields)
+                {
+                    if (field.ValueField == "")
+                    {
+                        isDone = false;
+                        break;
+                    }
+                    else
+                    {
+                        isDone = true;
+                    }
+                }
+                if (isDone)
+                {
+                    _canHelpAction = false;
+                    ButtonHelpClickCommand = null;
+                    _canSolveAction = false;
+                    ButtonSolveGameClickCommand = null;
+                }
+            }
+
+        }
+        public void ThreadMethodSolver()
+        {
+            bool isDone = false;
+            Stack<int> stackOfIndexEmptyField = new Stack<int>();
+            List<string> listOfValueFromCurrentBoard = new List<string>();
+            for (int i = CurrentBoard.Fields.Count - 1; i >= 0; i--)
+            {
+                if (CurrentBoard.Fields[i].ValueField == "")
+                {
+                    stackOfIndexEmptyField.Push(i);
+                }
+            }
+            foreach (Field field in CurrentBoard.Fields)
+            {
+                listOfValueFromCurrentBoard.Add(field.ValueField);
+            }
+            BoardFactory boardFactory = new BoardFactory();
+            Board tmpCurrentBoard = boardFactory.CreateBoardBasedOnLoading(listOfValueFromCurrentBoard);
+            if (stackOfIndexEmptyField.Count != 0)
+            {
+                RecursivesSolver(stackOfIndexEmptyField.Pop(), ref tmpCurrentBoard, ref isDone, ref stackOfIndexEmptyField);
+                if (isDone)
+                {
+                    CurrentBoard = tmpCurrentBoard;
+                    foreach (Field field in CurrentBoard.Fields)
+                    {
+                        field.AllFieldAreCreated = true;
+                        field.AddedValueField += OnAddedField;
+                    }
+                    _canHelpAction = false;
+                    ButtonHelpClickCommand = null;
+                    _canSolveAction = false;
+                    ButtonSolveGameClickCommand = null;
+                }
+                else
+                {
+                    MessageBox.Show("Nie można znalesc rozwiazania");
+                }
+            }
+        }
+        private void ButtonNewGameAction()
         {
             BoardFactory boardFactory = new BoardFactory();
             CurrentBoard = boardFactory.CreateBoard();
@@ -124,6 +229,7 @@ namespace Sudoku_Tarczykowski.ViewModel
             _canHelpAction = true;
             ButtonHelpClickCommand = null;
             _canSolveAction = true;
+            AmountOfHelp = 3;
             ButtonSolveGameClickCommand = null;
             _canPrintAction = true;
             ButtonPrintGameClickCommand = null;
@@ -185,15 +291,19 @@ namespace Sudoku_Tarczykowski.ViewModel
             {
                 CurrentBoard.Fields[randomNumber].ValueField = "";
             }
+            if (threadHelp.ThreadState == ThreadState.Suspended)
+            {
+                threadHelp.Resume();
+                threadHelp.Abort();
+            }
         }
-        private void buttonSaveGameAction()
+        private void ButtonSaveGameAction()
         {
-            MessageBox.Show("Zapisuje");
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "txt | *.txt";
             sfd.FileName = "Sudoku.txt";
             sfd.ShowDialog();
-            if(sfd.FileName != "")
+            if (sfd.FileName != "")
             {
                 StreamWriter sw = new StreamWriter(sfd.FileName);
                 string tableToSave = "";
@@ -211,10 +321,14 @@ namespace Sudoku_Tarczykowski.ViewModel
                 sw.WriteLine(tableToSave);
                 sw.Close();
             }
+            if (threadHelp.ThreadState == ThreadState.Suspended)
+            {
+                threadHelp.Resume();
+                threadHelp.Abort();
+            }
         }
-        private void buttonLoadGameAction()
+        private void ButtonLoadGameAction()
         {
-            MessageBox.Show("Wczytuje");
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "txt | *.txt";
             ofd.FileName = "Sudoku.txt";
@@ -246,12 +360,13 @@ namespace Sudoku_Tarczykowski.ViewModel
                         CurrentBoard = temporaryBoard;
                         _canSaveAction = true;
                         ButtonSaveGameClickCommand = null;
-                        _canHelpAction = true;
+                        _canHelpAction = false;
                         ButtonHelpClickCommand = null;
                         _canSolveAction = true;
                         ButtonSolveGameClickCommand = null;
                         _canPrintAction = true;
                         ButtonPrintGameClickCommand = null;
+                        AmountOfHelp = 0;
                         foreach (Field field in CurrentBoard.Fields)
                         {
                             field.AllFieldAreCreated = true;
@@ -268,105 +383,42 @@ namespace Sudoku_Tarczykowski.ViewModel
                     MessageBox.Show("Ciag znakow w pliku Sudoku.txt musi posiadac 162 znaki");
                 }
             }
+            if (threadHelp.ThreadState == ThreadState.Suspended)
+            {
+                threadHelp.Resume();
+                threadHelp.Abort();
+            }
         }
-        private void buttonHelpAction()
+        private void ButtonHelpAction()
         {
-            bool isDone = false;
-            Stack<int> stackOfIndexEmptyField = new Stack<int>();
-            List<string> listOfValueFromCurrentBoard = new List<string>();
-            for (int i = CurrentBoard.Fields.Count - 1; i >= 0; i--)
+            if (!threadHelp.IsAlive)
             {
-                if (CurrentBoard.Fields[i].ValueField == "")
-                {
-                    stackOfIndexEmptyField.Push(i);
-                }
-            }
-            foreach (Field field in CurrentBoard.Fields)
-            {
-                listOfValueFromCurrentBoard.Add(field.ValueField);
-            }
-            BoardFactory boardFactory = new BoardFactory();
-            Board tmpCurrentBoard = boardFactory.CreateBoardBasedOnLoading(listOfValueFromCurrentBoard);
-            RecursivesSolver(stackOfIndexEmptyField.Pop(), ref tmpCurrentBoard, ref isDone, ref stackOfIndexEmptyField);
-            if (isDone)
-            {
-                MessageBox.Show(ChosenTextBoxToHelp);
-                //CurrentBoard = tmpCurrentBoard;
-                //foreach (Field field in CurrentBoard.Fields)
-                //{
-                //    field.AllFieldAreCreated = true;
-                //    field.AddedValueField += OnAddedField;
-                //}
+                threadHelp = new Thread(ThreadMethodHelp);
+                threadHelp.Start();
             }
             else
             {
-                MessageBox.Show("Nie można znalesc rozwiazania");
-            }
-            AmountOfHelp--;
-            if(AmountOfHelp == 0)
-            {
-                _canHelpAction = false;
-                ButtonHelpClickCommand = null;
-            }
-            isDone = false;
-            foreach (Field field in CurrentBoard.Fields)
-            {
-                if(field.ValueField == "")
-                {
-                    isDone = false;
-                    break;
-                }
-                else
-                {
-                    isDone = true;
-                }
-            }
-            if(isDone)
-            {
-                _canHelpAction = false;
-                ButtonHelpClickCommand = null;
-                _canSolveAction = false;
-                ButtonSolveGameClickCommand = null;
+                MessageBox.Show("Kliknij dwukrotnie na pole, ktore ma byc odkryte");
             }
         }
-        private void buttonSolveGameAction()
+        private void ButtonSolveGameAction()
         {
-            bool isDone = false;
-            Stack<int> stackOfIndexEmptyField = new Stack<int>();
-            List<string> listOfValueFromCurrentBoard = new List<string>();
-            for (int i = CurrentBoard.Fields.Count - 1; i >= 0; i--)
+            if (!threadSolver.IsAlive)
             {
-                if(CurrentBoard.Fields[i].ValueField == "")
-                {
-                    stackOfIndexEmptyField.Push(i);
-                }
-            }
-            foreach(Field field in CurrentBoard.Fields)
-            {
-                listOfValueFromCurrentBoard.Add(field.ValueField);
-            }
-            BoardFactory boardFactory = new BoardFactory();
-            Board tmpCurrentBoard = boardFactory.CreateBoardBasedOnLoading(listOfValueFromCurrentBoard);
-            RecursivesSolver(stackOfIndexEmptyField.Pop(), ref tmpCurrentBoard, ref isDone, ref stackOfIndexEmptyField);
-            if(isDone)
-            {
-                CurrentBoard = tmpCurrentBoard;
-                foreach (Field field in CurrentBoard.Fields)
-                {
-                    field.AllFieldAreCreated = true;
-                    field.AddedValueField += OnAddedField;
-                }
-                _canHelpAction = false;
-                ButtonHelpClickCommand = null;
-                _canSolveAction = false;
-                ButtonSolveGameClickCommand = null;
+                threadSolver = new Thread(ThreadMethodSolver);
+                threadSolver.Start();
             }
             else
             {
-                MessageBox.Show("Nie można znalesc rozwiazania");
+                MessageBox.Show("Poczekaj na rozwiazanie");
+            }
+            if (threadHelp.ThreadState == ThreadState.Suspended)
+            {
+                threadHelp.Resume();
+                threadHelp.Abort();
             }
         }
-        private void buttonPrintGameAction()
+        private void ButtonPrintGameAction()
         {
             PdfPTable pdfTable = new PdfPTable(9);
             pdfTable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -389,20 +441,25 @@ namespace Sudoku_Tarczykowski.ViewModel
             doc.Add(pdfTable);
             doc.Close();
             System.Diagnostics.Process.Start(@"S.pdf");
+            if (threadHelp.ThreadState == ThreadState.Suspended)
+            {
+                threadHelp.Resume();
+                threadHelp.Abort();
+            }
         }
         #region Property
         public ICommand ButtonNewGameClickCommand
         {
             get
             {
-                return buttonNewGameClickCommand ?? (buttonNewGameClickCommand = new CommandHandler(() => buttonNewGameAction(), true));
+                return buttonNewGameClickCommand ?? (buttonNewGameClickCommand = new CommandHandler(() => ButtonNewGameAction(), true));
             }
         }
         public ICommand ButtonSaveGameClickCommand
         {
             get
             {
-                return buttonSaveGameClickCommand ?? (buttonSaveGameClickCommand = new CommandHandler(() => buttonSaveGameAction(), _canSaveAction));
+                return buttonSaveGameClickCommand ?? (buttonSaveGameClickCommand = new CommandHandler(() => ButtonSaveGameAction(), _canSaveAction));
             }
             set
             {
@@ -417,14 +474,14 @@ namespace Sudoku_Tarczykowski.ViewModel
         {
             get
             {
-                return buttonLoadGameClickCommand ?? (buttonLoadGameClickCommand = new CommandHandler(() => buttonLoadGameAction(), true));
+                return buttonLoadGameClickCommand ?? (buttonLoadGameClickCommand = new CommandHandler(() => ButtonLoadGameAction(), true));
             }
         }
         public ICommand ButtonHelpClickCommand
         {
             get
             {
-                return buttonHelpClickCommand ?? (buttonHelpClickCommand = new CommandHandler(() => buttonHelpAction(), _canHelpAction));
+                return buttonHelpClickCommand ?? (buttonHelpClickCommand = new CommandHandler(() => ButtonHelpAction(), _canHelpAction));
             }
             set
             {
@@ -439,7 +496,7 @@ namespace Sudoku_Tarczykowski.ViewModel
         {
             get
             {
-                return buttonSolveGameClickCommand ?? (buttonSolveGameClickCommand = new CommandHandler(() => buttonSolveGameAction(), _canSolveAction));
+                return buttonSolveGameClickCommand ?? (buttonSolveGameClickCommand = new CommandHandler(() => ButtonSolveGameAction(), _canSolveAction));
             }
             set
             {
@@ -454,7 +511,7 @@ namespace Sudoku_Tarczykowski.ViewModel
         {
             get
             {
-                return buttonPrintGameClickCommand ?? (buttonPrintGameClickCommand = new CommandHandler(() => buttonPrintGameAction(), _canPrintAction));
+                return buttonPrintGameClickCommand ?? (buttonPrintGameClickCommand = new CommandHandler(() => ButtonPrintGameAction(), _canPrintAction));
             }
             set
             {
@@ -521,6 +578,8 @@ namespace Sudoku_Tarczykowski.ViewModel
             get { return chosenTextBoxToHelp; }
             set
             {
+                if (threadHelp.ThreadState == ThreadState.Suspended)
+                    threadHelp.Resume();
                 chosenTextBoxToHelp = value;
                 OnPropertyChanged("ChosenTextBoxToHelp");
             }
